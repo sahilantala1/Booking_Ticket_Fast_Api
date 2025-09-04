@@ -19,7 +19,7 @@ templates = Jinja2Templates(directory="app/templates")
 
 # ------------------- AUTH -------------------
 
-@app.get("/register_page", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def register_page(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
