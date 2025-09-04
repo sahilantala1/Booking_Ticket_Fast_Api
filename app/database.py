@@ -12,6 +12,13 @@ DB_HOST = os.getenv("DB_HOST")
 DB_PORT = os.getenv("DB_PORT")
 DB_NAME = os.getenv("DB_NAME")
 
+# print(os.getcwd())
+# print(DB_USER)
+# print(DB_PASSWORD)
+# print(DB_HOST)
+# print(DB_NAME)
+# print(DB_PORT)
+
 DATABASE_URL  = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 # Replace with your Postgres details
