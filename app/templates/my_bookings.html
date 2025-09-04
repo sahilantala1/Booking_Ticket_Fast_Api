@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    }
+    .card {
+      border-radius: 15px;
+    }
+    table {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <div class="card shadow p-4">
+      <h2 class="mb-4 text-center">🎟 My Bookings</h2>
+      <p class="text-center">Welcome, <strong>{{ username }}</strong></p>
+
+      {% if bookings %}
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Seat Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for booking in bookings %}
+            <tr>
+              <td>{{ booking.event.title }}</td>
+              <td>{{ booking.event.date.strftime('%Y-%m-%d') if booking.event.date else "N/A" }}</td>
+              <td>{{ booking.event.time.strftime('%H:%M') if booking.event.time else "N/A" }}</td>
+              <td>{{ booking.seat.seat_number }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="alert alert-info text-center">
+        You have no bookings yet.
+      </div>
+      {% endif %}
+
+      <div class="text-center mt-3">
+        <a href="/events_page" class="btn btn-primary">⬅ Back to Events</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
